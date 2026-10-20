@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning About CSS</title>
+    <style>
+        .nomobile { 
+            position: relative;
+            left: 0;
+            top: 0;
+            display: none; 
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: absolute;
+            background-color: #fff;
+            z-index: calc(infinity); /* :3 */
+
+            .nomobiletext {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                translate: -50% -50%;
+            }
+        }
+
+        @media (hover: none), (max-width: 1129px) {
+            .nomobile { display: block; }
+        }
+
+        body {
+            background-color: rgb(255, 213, 166);
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+
+        #images {
+            img {
+                width: 400px;
+                height: 400px;                
+            }
+            
+            figure {
+                position: absolute;
+                top: 225px;
+                left: 75px;
+                margin: 0;
+                scroll-margin-top: 100vh;
+                transition: all .5s ease-in-out;
+                
+                &:target {
+                    transition: all .5s ease-in-out;
+                }
+                
+                &:not(:target), 
+                &:target ~ img#slide-1  {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+            ul {
+                position: absolute;
+                top: 275px;
+                left: -10px;
+                list-style: none;
+                
+                li {
+                    width: 1.25em;
+                    height: 1.25em;
+                    font-family: monospace;
+                    font-size: 1.5em;
+                    border-radius: 50%;
+                    background: rgb(94, 116, 106);
+                    text-align: center;
+                    margin-top: .7em;
+                
+                    &:hover {
+                        background: #353;
+                    }
+            
+                    a {
+                        text-decoration: none;
+                        color: #c5d5e6;
+                    }
+                }
+            }
+        }
+
+        #images:not(:has(:target)) #slide-1 {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #house {
+            .box {
+                position: absolute;
+                top: 250px;
+                right: 125px;
+                width: 200px;
+                height: 200px;
+                border: 4px solid #0038a8;
+                box-shadow: 0 0 0 2px #9b4f96, 0 0 0 6px #d60270
+            }
+
+            .box > span {
+                position: absolute;
+                inset: 0;
+                text-align: center;
+                transform: rotate(var(--angle)) translateY(0.5em);
+                font-weight: 900;
+            }
+
+            .top    { --angle: 0deg; }
+            .right  { --angle: 90deg; }
+            .bottom { --angle: 180deg; }
+            .left   { --angle: 270deg; color: #0050ff; }
+        }
+
+        #magic-clover {
+            .clover {
+                position: absolute;
+                bottom: 200px;
+                right: 200px;
+                translate: 50% 50%;
+                height: 100px;
+                width: 100px;
+                
+                transition: opacity .1s ease;
+            }
+
+            .leaf {
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                background: #3a9a3a;
+                border-radius: 50% 50% 0 50%;
+                transform-origin: 100% 100%;
+                rotate: calc(var(--i) * 90deg);
+                transition: opacity .2s ease;
+            }
+            
+            .stem {
+                position: absolute;
+                top: 50%;
+                left: calc(50% - 2px);
+                width: 40px;
+                height: 80px;
+                border-left: 4px solid #3a9a3a;
+                border-bottom-left-radius: 100% 50%;
+                transition: opacity .2s ease;
+            }
+        }
+        
+        .opac {
+            position: absolute;
+            bottom: 200px;
+            right: 200px;
+            translate: 50% 50%;
+            height: calc(var(--i) * 75px + 100px);
+            width: calc(var(--i) * 75px + 100px);
+            border-radius: calc(infinity * 1px);
+            z-index: calc(10 - var(--i));
+        }
+
+        .r1:hover ~ #clover { opacity: 0.0; }
+        .r2:hover ~ #clover { opacity: 0.1; }
+        .r3:hover ~ #clover { opacity: 0.2; }
+        .r4:hover ~ #clover { opacity: 0.3; }
+        .r5:hover ~ #clover { opacity: 0.4; }
+        .r6:hover ~ #clover { opacity: 0.5; }
+        .r7:hover ~ #clover { opacity: 0.6; }
+        .r8:hover ~ #clover { opacity: 0.7; }
+        .r9:hover ~ #clover { opacity: 0.8; }
+        .rx:hover ~ #clover { opacity: 0.9; }
+
+        #bash {
+            font-size: 10px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="nomobile"><div class="nomobiletext">GET OFF YER PHONE</div></div>
+    <h1>Hi! I'm <a href="https://en.wikipedia.org/wiki/Harry_(given_name)" style="text-shadow: 0 0 2px #818181"><span style="color: #55cdfc;">H</span><span style="color: #f7a8b8;">a</span><span style="color: #ffffff;">r</span><span style="color: #f7a8b8;">r</span></a><a href="https://en.wikipedia.org/wiki/Harry_Potter" style="text-shadow: 0 0 2px #818181"><span style="color: #55cdfc;">y</span></a>. Click on my name to find out about my name.</h1>
+    <h2>This is my page learning about how some little known features in CSS works.</h2>
+    <h3>The first line of source code is unreadable because newlines in html add a space instead of being meaningless. Blame the designers.</h3>
+    <div id="bash">
+        Made for Boba Bash Canberra 2026. (:3)
+    </div>
+    <hr>
+    <br><br>
+    <div id="images">
+        <figure id="slide-1">
+            <img src="img1.jpg" alt="A wild rabbit on the grass next to a brick building." title="Wondering why this rabbit is so squished? Hydraulic Press :("/>
+            <figcaption>A random wild rabbit I've found while taking classes at ANU.</figcaption>
+        </figure>
+        <figure id="slide-2">
+            <img src="img2.jpg" alt="A rabbit with a person holding a light bulb over its head, with yellow lines drawn around the bulb." title="Yes, the yellow lines are drawn on by sharpie."/>
+            <figcaption>This rabbit has a very bright idea!</figcaption>
+        </figure>
+        <figure id="slide-3">
+            <img src="img3.jpg" alt="A rabbit half-buried in dirt, with a speech bubble saying 'Hi, I'm a grub and I live in the soil.'" title="It's having a deep philosophical think about whether carrots also live in the soil or not."/>
+            <figcaption>Hmm... what are you doing in there!?</figcaption>
+        </figure>
+        
+        
+        <ul>
+            <li><a href="#slide-1" aria-label="Image 1">1</a></li><br><br><br>
+            <li><a href="#slide-2" aria-label="Image 2">2</a></li><br><br><br>
+            <li><a href="#slide-3" aria-label="Image 3">3</a></li>
+        </ul>
+    </div>
+
+    <div id="house">
+        <div class="box" title="Yes, the border was made with box shadow abuse.">
+            <span class="top">hey guys</span>
+            <span class="right">welcome</span>
+            <span class="bottom">to my</span>
+            <span class="left">house</span>
+        </div>
+    </div>
+
+    <div id="magic-clover">
+        <!-- it's an abomination -->
+        <div class="opac r1" style="--i: 1;"></div>
+        <div class="opac r2" style="--i: 2;"></div>
+        <div class="opac r3" style="--i: 3;"></div>
+        <div class="opac r4" style="--i: 4;"></div>
+        <div class="opac r5" style="--i: 5;"></div>
+        <div class="opac r6" style="--i: 6;"></div>
+        <div class="opac r7" style="--i: 7;"></div>
+        <div class="opac r8" style="--i: 8;"></div>
+        <div class="opac r9" style="--i: 9;"></div>
+        <div class="opac rx" style="--i: 10;"></div>
+        <div id="clover" class="clover">
+            <div class="stem"></div>
+            <div class="leaf" style="--i: 0"></div>
+            <div class="leaf" style="--i: 1"></div>
+            <div class="leaf" style="--i: 2"></div>
+            <div class="leaf" style="--i: 3"></div>
+            <span style="position: absolute; bottom: -50px;">touch me!</span>
+        </div>
+    </div>
+</body>
+</html>
